@@ -11,18 +11,19 @@ class IndexView(generic.ListView):
     context_object_name = 'blog_posts'
 
     def get_queryset(self):
-        return Post.objects.order_by('timestamp')
+        return Post.objects.order_by('-timestamp')
 
 def edit_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     print post
     
 
-def add_post(request, post_id):
+def add_post(request):
     post = Post()
     post.title = request.POST['title']
     post.body = request.POST['body']
     post.save()
+    return HttpResponseRedirect('/')
     
 
 # def vote(request, question_id):
