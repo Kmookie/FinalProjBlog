@@ -1,0 +1,14 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+
+
+{% if blog_posts %}
+    {% for post in blog_posts %}
+        <h2>{{post.title}}</h2>
+        <p>{{post.body}}</p>
+        <p>{{post.timestamp}}</p>
+    {% endfor %}
+{% else %}
+    <p>No blog posts are available.</p>
+{% endif %}
