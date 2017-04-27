@@ -12,18 +12,26 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return Post.objects.order_by('-timestamp')
+        
+class DeleteView(generic.DeleteView):
+    model = Post
+    template_name = 'detail.html'
+    
+    def get_success_url(self):
+        return '/'
 
-def edit_post(request, post_id):
-    post = get_object_or_404(Post, pk=post_id)
-    print post
+    # def delete(request, pk):
+    #     Post.objects.get(pk=pk).delete()
+    #     # return HttpResponseRedirect('/')
     
 
 def add_post(request):
-    post = Post()
-    post.title = request.POST['title']
-    post.body = request.POST['body']
-    post.save()
-    return HttpResponseRedirect('/')
+    if request.method == 'POST':
+        post = Post()
+        post.title = request.POST['title']
+        post.body = request.POST['body']
+        post.save()
+        return HttpResponseRedirect('/')
     
 
 # def vote(request, question_id):

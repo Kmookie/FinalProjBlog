@@ -1,27 +1,35 @@
 {% load staticfiles %}
 
-<script type="text/javascript" src="delete.js"></script>
-
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-
-<form action="/post" method="post">
+<head>
+    <script type="text/javascript" src="{% static 'delete.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
+</head>
+<body>
+    <h1>Morgans Home Blogs </h1>
+    <form action="/post" method="post">
 {% csrf_token %}
-    <input type="text" name="title"/>
-    <textarea name="body"></textarea>
     
-    <input type="submit" value="Post" />
-</form>
-
+        
+        <p>Add your Title</p>
+        <input type="text" name="title" class="box" />
+        
+        <p>Add your Body</p>
+        <textarea name="body" class="box text-area"></textarea>
+    
+        <input type="submit" value="Post" />
+    </form>
 
 
 {% if blog_posts %}
     {% for post in blog_posts %}
+    <form>
         <h2>{{post.title}}</h2>
         <p>{{post.body}}</p>
         <p>{{post.timestamp}}</p>
         <input type="submit" value="Delete" onclick="deletePost({{post.id}})"/>
-        <input type="submit" value="Edit" onclick="editPost({{post.id}})"/>
+    </form>
     {% endfor %}
 {% else %}
     <p>No blog posts are available.</p>
 {% endif %}
+</body>
