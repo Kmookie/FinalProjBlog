@@ -11,7 +11,7 @@
     
         
         <p>Add your Title</p>
-        <input type="text" name="title" class="box" />
+        <input type="text" name="title" class="box text-input" />
         
         <p>Add your Body</p>
         <textarea name="body" class="box text-area"></textarea>
@@ -24,7 +24,9 @@
     {% for post in blog_posts %}
     <form>
         <h2>{{post.title}}</h2>
-        <p>{{post.body}}</p>
+        <div class ="max-width">
+            <p>{{post.body}}</p>
+        </div>
         <p>{{post.timestamp}}</p>
         <input type="submit" value="Delete" onclick="deletePost({{post.id}})"/>
     </form>
