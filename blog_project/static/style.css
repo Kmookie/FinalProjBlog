@@ -17,6 +17,11 @@
 .text-input {
     width: 400px;
     
+    
+}
+h2{
+    text-decoration: underline;
+    font-family: cursive, serif, arial, Times;
 }
 
 body {

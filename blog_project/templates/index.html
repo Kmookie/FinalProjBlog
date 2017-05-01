@@ -6,17 +6,24 @@
 </head>
 <body>
     <h1>Morgans Home Blogs </h1>
+
+    <input type="button" value="Copy Url Below & To Clipboard" onclick="mycopy();" />
+    <br /> <textarea id="url" rows="1" cols="60"></textarea>
+
     <form action="/post" method="post">
 {% csrf_token %}
     
-        
+        <p>Write A New Post</p>
+
         <p>Add your Title</p>
-        <input type="text" name="title" class="box text-input" />
+
+        <input type="text" name="title" maxlength="60" class="box text-input" />
         
         <p>Add your Body</p>
-        <textarea name="body" class="box text-area"></textarea>
+        <textarea name="body" class="box text-area"  ></textarea>
     
         <input type="submit" value="Post" />
+        
     </form>
 
 

@@ -33,6 +33,13 @@ def add_post(request):
         post.save()
         return HttpResponseRedirect('/')
     
+    
+
+# def index(request):
+#     baseurl = request.build_absolute_uri()
+#     return render_to_response('your-template.html', { 'baseurl': baseurl })
+
+
 
 # def vote(request, question_id):
 #     question = get_object_or_404(Question, pk=question_id)

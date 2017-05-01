@@ -8,3 +8,11 @@ function deletePost(postId) {
     };
     xhr.send(null);
 }
+
+function mycopy() {
+  var Url = document.getElementById("url");
+  Url.innerHTML = window.location.href;
+  console.log(Url.innerHTML)
+  Url.select();
+  document.execCommand("copy");
+}
